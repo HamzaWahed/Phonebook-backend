@@ -3,6 +3,22 @@ const app = express();
 
 app.use(express.json());
 
+const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "May",
+  "Apr",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 let persons = [
   {
     id: 1,
@@ -28,6 +44,18 @@ let persons = [
 
 app.get("/api/persons", (req, res) => {
   res.json(persons);
+});
+
+app.get("/info", (req, res) => {
+  const currentDate = new Date();
+  res.end(`
+    <p>Phonebook has info for ${persons.length} people test</p>
+    <p>${weekday[currentDate.getDay()]} ${
+    months[currentDate.getMonth()]
+  } ${currentDate.getDay()} ${currentDate.getFullYear()} ${currentDate.toLocaleTimeString()} ${currentDate.getTimezoneOffset()} (${
+    Intl.DateTimeFormat().resolvedOptions().timeZone
+  } time)</p>
+  `);
 });
 
 const PORT = 3001;
