@@ -1,0 +1,27 @@
+{
+  "name": "phonebook-backend",
+  "version": "1.0.0",
+  "description": "fullstack phonebook exercises",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HamzaWahed/Phonebook-backend.git"
+  },
+  "author": "Hamza Wahed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HamzaWahed/Phonebook-backend/issues"
+  },
+  "homepage": "https://github.com/HamzaWahed/Phonebook-backend#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
