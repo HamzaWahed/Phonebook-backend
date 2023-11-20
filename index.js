@@ -46,6 +46,17 @@ app.get("/api/persons", (req, res) => {
   res.json(persons);
 });
 
+app.get("/api/persons/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const person = persons.find((p) => p.id === id);
+
+  if (!person) {
+    res.status(404).end();
+  } else {
+    res.json(person);
+  }
+});
+
 app.get("/info", (req, res) => {
   const currentDate = new Date();
   res.end(`
