@@ -7,7 +7,7 @@ if (process.argv.length < 3) {
 
 const password = process.argv[2];
 
-const url = `mongodb+srv://ihamzy22:${password}@cluster0.ph4dk2a.mongodb.net/phoneBook?retryWrites=true&w=majority`;
+const url = `mongodb+srv://ihamzy22:${password}@cluster0.ph4dk2a.mongodb.net/?retryWrites=true&w=majority`;
 mongoose.set("strictQuery", false);
 mongoose.connect(url);
 
@@ -21,9 +21,11 @@ const Person = mongoose.model("Person", personSchema);
 if (process.argv.length < 5) {
   Person.find({}).then((result) => {
     console.log("phonebook:");
-    result.array.forEach((person) => {
-      console.log(`${person.name} ${person.number}`);
-    });
+    if (result) {
+      result.forEach((person) => {
+        console.log(`${person.name} ${person.number}`);
+      });
+    }
 
     mongoose.connection.close();
   });
