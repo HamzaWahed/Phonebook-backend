@@ -68,10 +68,11 @@ app.get("/api/persons/:id", (request, response, next) => {
     .catch((error) => next(error));
 });
 
-app.get("/info", (request, response) => {
+app.get("/info", async (request, response) => {
+  const count = await Person.countDocuments();
   const currentDate = new Date();
   response.end(`
-    <p>Phonebook has info for ${Person.countDocuments()} people test</p>
+    <p>Phonebook has info for ${count} people</p>
     <p>${weekday[currentDate.getDay()]} ${
     months[currentDate.getMonth()]
   } ${currentDate.getDay()} ${currentDate.getFullYear()} ${currentDate.toLocaleTimeString()} ${currentDate.getTimezoneOffset()} (${
